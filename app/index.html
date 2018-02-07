@@ -46,23 +46,26 @@
     <span class="navbar-brand mb-0 h1">Voodoo Dashboard - Spending and Revenue</span>
   </nav>
 
-  <section class="border-bottom">
+  <section id="formContainer" class="border-bottom">
     <form id="formFilter" class="form-inline">
       <label for="dateStart">Display data between</label>
       <input type="date" id="dateStart" name="dateStart" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control ml-2 mr-2" title="Data from this date will be included">
       <label for="dateEnd">and</label>
       <input type="date" id="dateEnd" name="dateEnd" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control ml-2 mr-2" title="Data from this date will NOT be included">
       <button type="submit" class="btn btn-primary">Show</button>
+      <div id="loader" class="ml-2 d-none"></div>
     </form>
   </section>
 
-  <section>
-    <span id="placeholder">
-      Please select an interval to display then click on the "Show" button
-    </span>
-    <div id="loader" class="d-none">
+  <section id="msgContainer" class="d-none">
 
+  </section>
+
+  <section id="resultsContainer">
+    <div class="alert alert-primary" role="alert" id="placeholder">
+      Please select the interval you want to display then click on the "Show" button
     </div>
+
     <table class="table table-sm table-bordered table-hover d-none" id="mainTable">
       <caption></caption>
       <thead class="thead-light">

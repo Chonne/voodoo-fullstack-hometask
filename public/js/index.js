@@ -1,6 +1,7 @@
 const mainTableEl = document.getElementById('mainTable');
 const mainTableCaption = mainTableEl.querySelector('caption');
 const formFilterEl = document.getElementById('formFilter');
+const loaderEl = document.getElementById('loader');
 const dateStartEl = document.getElementById('dateStart');
 const dateEndEl = document.getElementById('dateEnd');
 const headTotalEl = mainTableEl.querySelector('thead th.total');
@@ -13,19 +14,8 @@ let tplAppDetailsRow = document.getElementById('appDetailsRow').content;
 let tplDefaultCountryCell = document.getElementById('defaultCountryCell').content;
 
 formFilterEl.addEventListener('submit', function(e) {
-  axios.get('/data', {
-    params: {
-      start: dateStartEl.value,
-      end: dateEndEl.value,
-    }
-  })
-    .then(function(response) {
-      console.log(response);
-      displayData(response.data.data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+  fetchData(dateStartEl.value, dateEndEl.value);
+
   e.preventDefault();
 });
 
@@ -37,6 +27,43 @@ function initDates() {
 
   dateStartEl.value = aWeekAgo.toJSON().substring(0, 10);
   dateEndEl.value = today.toJSON().substring(0, 10);
+}
+
+function fetchData(start, end) {
+  preFetchData();
+
+  axios.get('/data', {
+    params: {
+      start: start,
+      end: end,
+    }
+  })
+    .then(function(response) {
+      displayData(response.data.data);
+      postFetchData();
+    })
+    .catch(function(error) {
+      postFetchData();
+      console.error(error);
+    });
+}
+
+function preFetchData() {
+  for (let el of formFilterEl) {
+    el.disabled = true;
+  }
+
+  loaderEl.classList.remove('d-none');
+  mainTableEl.classList.add('loading');
+}
+
+function postFetchData() {
+  for (let el of formFilterEl) {
+    el.disabled = false;
+  }
+
+  loaderEl.classList.add('d-none');
+  mainTableEl.classList.remove('loading');
 }
 
 function displayData(data) {
