@@ -1,0 +1,43 @@
+section {
+  margin: 10px;
+}
+#mainTable {
+  width: auto;
+}
+
+#mainTable caption {
+  caption-side: top;
+}
+
+#mainTable td {
+  font-family: monospace;
+  text-align: right;
+}
+
+#mainTable td.total,
+#mainTable tfoot td {
+  font-weight: bold;
+}
+
+#mainTable tr.app td {
+  font-size: 1.2em;
+}
+
+#mainTable tr.platform th {
+  font-size: 0.9em;
+  padding-left: 1em;
+}
+
+#mainTable tr.acquisition th,
+#mainTable tr.monetization th {
+  font-weight: normal;
+  font-size: 0.9em;
+  padding-left: 2em;
+}
+
+#mainTable tfoot th,
+#mainTable tfoot td {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}

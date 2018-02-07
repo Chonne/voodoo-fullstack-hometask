@@ -1,0 +1,26 @@
+{
+  "name": "voodoo-api-test",
+  "version": "1.0.0",
+  "description": "voodoo-api-test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/Shning/voodoo-api-test.git"
+  },
+  "author": "Shaun Lecathelinais",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Shning/voodoo-api-test#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bootstrap": "^4.0.0",
+    "config": "^1.29.4",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "server": {
+    "port": 8000
+  },
+  "acquisitionApi": {
+    "url": "http://mock-api.voodoo.io/acquisition",
+    "key": ""
+  },
+  "monetizationApi": {
+    "url": "http://mock-api.voodoo.io/monetization",
+    "key": ""
+  }
+}
