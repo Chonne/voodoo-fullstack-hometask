@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:dev": "node index.js",
     "prestart": "npm run-script build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cleanup": "rimraf ./public/css/lib && rimraf ./public/js/lib",
