@@ -178,17 +178,14 @@ module.exports = function (apiServer) {
         res.status(200).send(json);
       }))
       .catch(function (error) {
-        console.log(error);
-        
-        const json = {
-          start,
-          end,
-          error,
-        };
+        let msg = 'Internal Server Error';
 
-        // res.setTimeout(1100, function () {
-          res.status(500).send(json);
-        // });
+        if (process.env.NODE_ENV !== 'production') {
+          msg = error.message;
+          console.log(error);
+        }
+
+        res.status(500).send(msg);
       });
   });
 };

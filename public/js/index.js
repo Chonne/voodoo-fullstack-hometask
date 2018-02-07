@@ -72,13 +72,15 @@ function postFetchData() {
 function displayError(error) {
   let msg = 'An error has occurred, your data could not be loaded: ';
 
-  if (error.response.data !== '' && typeof error.response.data === 'string') {
+  if (error.response !== undefined && error.response.data !== '' && typeof error.response.data === 'string') {
     msg += error.response.data;
   } else {
-    msg += 'Unknown reason';
+    msg += error.message;
   }
 
-  msg += ` (code: ${error.response.status})`;
+  if (error.response !== undefined) {
+    msg += ` (code: ${error.response.status})`;
+  }
 
   msgEl.innerHTML = msg;
   msgContainerEl.classList.remove('d-none');
