@@ -41,7 +41,7 @@ function fetchData(start, end) {
     }
   })
     .then(function(response) {
-      displayData(response.data.data);
+      displayData(response.data);
       postFetchData();
     })
     .catch(function(error) {
@@ -93,9 +93,9 @@ function displayData(data) {
   // todo: show dates as locale string
   mainTableCaption.innerHTML = `Showing data between ${data.start} and ${data.end}`;
 
-  buildTHead(data.countries);
-  buildTBody(data.apps, data.countries);
-  buildTFoot(data._totals, data.countries);
+  buildTHead(data.data.countries);
+  buildTBody(data.data.apps, data.data.countries);
+  buildTFoot(data.data._totals, data.data.countries);
   
   document.getElementById('placeholder').classList.add('d-none');
   mainTableEl.classList.remove('d-none');
