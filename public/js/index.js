@@ -12,9 +12,6 @@ let tplAppBlock = document.getElementById('appBlock').content;
 let tplAppDetailsRow = document.getElementById('appDetailsRow').content;
 let tplDefaultCountryCell = document.getElementById('defaultCountryCell').content;
 
-dateStartEl.value = '2017-08-01'; //now - 7 days
-dateEndEl.value = '2017-08-02'; // tomorrow (date is excluded)
-
 formFilterEl.addEventListener('submit', function(e) {
   axios.get('/data', {
     params: {
@@ -32,6 +29,16 @@ formFilterEl.addEventListener('submit', function(e) {
   e.preventDefault();
 });
 
+function initDates() {
+  // initialize dates from a week ago to today
+  let today = new Date();
+  let aWeekAgo = new Date();
+  aWeekAgo.setDate(aWeekAgo.getDate() - 7);
+
+  dateStartEl.value = aWeekAgo.toJSON().substring(0, 10);
+  dateEndEl.value = today.toJSON().substring(0, 10);
+}
+
 function displayData(data) {
   clearTable();
   
@@ -41,6 +48,7 @@ function displayData(data) {
   buildTBody(data.apps, data.countries);
   buildTFoot(data._totals, data.countries);
   
+  document.getElementById('placeholder').classList.add('d-none');
   mainTableEl.classList.remove('d-none');
 }
 
@@ -164,3 +172,5 @@ function buildTFoot(totals, countries) {
 
   footTotalEl.innerHTML = totals._total.toFixed(2);
 }
+
+initDates();
