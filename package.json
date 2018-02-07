@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "npm run-script build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cleanup": "rimraf ./public/css/lib && rimraf ./public/js/lib",
+    "build": "npm run-script cleanup && cpy ./node_modules/bootstrap/dist/css/bootstrap.min.css ./public/css/lib/ && cpy ./node_modules/axios/dist/axios.min.js ./public/js/lib/"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,8 @@
     "express": "^4.16.2"
   },
   "devDependencies": {
-    "morgan": "^1.9.0"
+    "cpy-cli": "^1.0.1",
+    "morgan": "^1.9.0",
+    "rimraf": "^2.6.2"
   }
 }
