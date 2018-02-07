@@ -4,6 +4,8 @@ const formFilterEl = document.getElementById('formFilter');
 const loaderEl = document.getElementById('loader');
 const dateStartEl = document.getElementById('dateStart');
 const dateEndEl = document.getElementById('dateEnd');
+const msgContainerEl = document.getElementById('msgContainer');
+const msgEl = msgContainerEl.querySelector('.alert');
 const headTotalEl = mainTableEl.querySelector('thead th.total');
 const tableFootEl = mainTableEl.querySelector('tfoot');
 const footTotalEl = tableFootEl.querySelector('tfoot td.total');
@@ -44,7 +46,7 @@ function fetchData(start, end) {
     })
     .catch(function(error) {
       postFetchData();
-      console.error(error);
+      displayError(error);
     });
 }
 
@@ -54,6 +56,7 @@ function preFetchData() {
   }
 
   loaderEl.classList.remove('d-none');
+  msgContainerEl.classList.add('d-none');
   mainTableEl.classList.add('loading');
 }
 
@@ -66,10 +69,27 @@ function postFetchData() {
   mainTableEl.classList.remove('loading');
 }
 
+function displayError(error) {
+  let msg = 'An error has occurred, your data could not be loaded: ';
+
+  if (error.response.data !== '' && typeof error.response.data === 'string') {
+    msg += error.response.data;
+  } else {
+    msg += 'Unknown reason';
+  }
+
+  msg += ` (code: ${error.response.status})`;
+
+  msgEl.innerHTML = msg;
+  msgContainerEl.classList.remove('d-none');
+  console.log(error);
+}
+
 function displayData(data) {
   clearTable();
   
-  mainTableCaption.innerHTML = `Showing data between ${dateStartEl.value} and ${dateEndEl.value}`;
+  // todo: show dates as locale string
+  mainTableCaption.innerHTML = `Showing data between ${data.start} and ${data.end}`;
 
   buildTHead(data.countries);
   buildTBody(data.apps, data.countries);
