@@ -59,7 +59,7 @@ const DashboardApp = (function () {
     // initialize dates from a week ago to today
     let today = new Date();
     let aWeekAgo = new Date();
-    aWeekAgo.setDate(aWeekAgo.getDate() - 1);
+    aWeekAgo.setDate(aWeekAgo.getDate() - 7);
 
     dateStartEl.value = aWeekAgo.toJSON().substring(0, 10);
     dateEndEl.value = today.toJSON().substring(0, 10);
