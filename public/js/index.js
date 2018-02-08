@@ -91,7 +91,7 @@ function displayData(data) {
   clearTable();
   
   // todo: show dates as locale string
-  mainTableCaption.innerHTML = `Showing data between ${data.start} and ${data.end}`;
+  mainTableCaption.innerHTML = `Showing data between <strong>${data.start}</strong> and <strong>${data.end}</strong>`;
 
   buildTHead(data.data.countries);
   buildTBody(data.data.apps, data.data.countries);

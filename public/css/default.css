@@ -17,6 +17,10 @@ section {
   100% { transform: rotate(360deg); }
 }
 
+#msgContainer .alert {
+  margin-bottom: 0;
+}
+
 #mainTable {
   width: auto;
 }
@@ -27,6 +31,7 @@ section {
 
 #mainTable caption {
   caption-side: top;
+  padding-top: 0;
 }
 
 #mainTable td {
