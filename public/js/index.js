@@ -34,7 +34,7 @@ function initDates() {
 function fetchData(start, end) {
   preFetchData();
 
-  axios.get('/data', {
+  axios.get('/api/data', {
     params: {
       start: start,
       end: end,

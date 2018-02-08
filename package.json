@@ -2,10 +2,9 @@
   "name": "voodoo-api-test",
   "version": "1.0.0",
   "description": "voodoo-api-test",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "node index.js",
+    "start": "node ./bin/www",
+    "start:dev": "node ./bin/www",
     "prestart": "npm run-script build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cleanup": "rimraf ./public/css/lib && rimraf ./public/js/lib",
