@@ -4,6 +4,8 @@ This app is meant to be used in a development environment. It isn't ready for pr
 
 ## Installation
 
+Start by installing the dependencies with `npm install`.
+
 Accessing the external APIs requires (unversioned) keys. You need to initialize them, either with a local unversioned json file or with environment variables. Other settings can be overridden in the same manner, such as the server's port number.
 
 Note: the key for the monetization API should be entered without the expected "Bearer " prefix.
