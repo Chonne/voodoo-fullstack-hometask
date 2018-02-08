@@ -8,7 +8,7 @@
     "prestart": "npm run-script build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cleanup": "rimraf ./public/css/lib && rimraf ./public/js/lib",
-    "build": "npm run-script cleanup && cpy ./node_modules/bootstrap/dist/css/bootstrap.min.css ./public/css/lib/ && cpy ./node_modules/axios/dist/axios.min.js ./public/js/lib/"
+    "build": "npm run-script cleanup && cpy ./node_modules/bootstrap/dist/css/bootstrap.min.css* ./public/css/lib/ && cpy ./node_modules/axios/dist/axios.min* ./public/js/lib/"
   },
   "repository": {
     "type": "git",
