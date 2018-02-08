@@ -26,3 +26,7 @@ $ unset NODE_CONFIG
 ## Usage
 
 Once the API keys are set, you can directly execute `npm start`, which will run the build process and start the express web server on the port defined in the `config/default.json` file (default is 8000).
+
+### Cloud9
+
+To run the app in a Cloud9 workspace, once it's installed and the configuration is setup, launch the app manually, ie with `npm start`. For now it doesn't work with the usual method of running directly `bin/www`.
