@@ -70,7 +70,7 @@ function postFetchData() {
 }
 
 function displayError(error) {
-  let msg = 'An error has occurred, your data could not be loaded: ';
+  let msg = 'Your data could not be loaded: ';
 
   if (error.response !== undefined && error.response.data !== '' && typeof error.response.data === 'string') {
     msg += error.response.data;
