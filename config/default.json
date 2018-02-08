@@ -1,6 +1,7 @@
 {
   "server": {
-    "port": 8000
+    "port": 8000,
+    "hostname": "localhost"
   },
   "acquisitionApi": {
     "url": "http://mock-api.voodoo.io/acquisition",

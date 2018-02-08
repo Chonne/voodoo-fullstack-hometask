@@ -9,8 +9,10 @@ const app = require('../app');
 const http = require('http');
 const config = require('config');
 
-const port = normalizePort(config.get('server.port'));
+const port = normalizePort(process.env.PORT || config.get('server.port'));
+const hostname = (process.env.IP || config.get('server.hostname'));
 app.set('port', port);
+app.set('hostname', hostname);
 
 const server = http.createServer(app);
 server.listen(port);
